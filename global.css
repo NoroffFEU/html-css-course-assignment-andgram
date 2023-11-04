@@ -1,0 +1,166 @@
+/* ====================
+   global styles
+   ==================== */
+
+:root {
+  --clr-primary: #07223E;
+  --btn-hover: #1a3c61;
+  --clr-contrast: #10B0C6;
+  --btn2-hover: #58d7e7;
+  --clr-neutral: #C8D1D6;
+
+  --ff-primary: 'Open Sans', sans-serif;
+  --ff-heading: 'Montserrat', sans-serif;
+
+  --fs-300: clamp(1rem, 0.9565rem + 0.2174vw, 1.125rem);
+  --fs-400: clamp(1.2rem, 1.0959rem + 0.5207vw, 1.4994rem);
+  --fs-500: clamp(1.44rem, 1.2457rem + 0.9717vw, 1.9988rem);
+  --fs-600: clamp(1.7281rem, 1.4025rem + 1.6283vw, 2.6644rem);
+  --fs-700: clamp(2.0738rem, 1.5596rem + 2.5707vw, 3.5519rem);
+  --fs-800: clamp(2.4881rem, 1.7066rem + 3.9076vw, 4.735rem);
+}
+
+/* ====================
+       components
+       ==================== */
+
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: var(--fs-300);
+  background-color: var(--clr-contrast);
+  color: var(--clr-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: 250ms;
+  text-align: center;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  background-color: var(--btn2-hover);
+}
+
+.button-2 {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: var(--fs-300);
+  background-color: var(--clr-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: 250ms;
+  text-align: center;
+}
+
+.button-2:hover {
+  transform: scale(1.1);
+  background-color: var(--btn-hover);
+}
+
+.wide {
+  width: 100%;
+}
+
+.wide:hover {
+  transform: scale(1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+body {
+  font-family: var(--ff-primary);
+  font-weight: 400;
+  font-size: var(--fs-300);
+  line-height: 1.6;
+
+  overflow-x: hidden;
+}
+
+/* ====================
+     typography
+     ==================== */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--ff-heading);
+  line-height: 1.2;
+}
+
+
+h1 {
+  font-weight: 700;
+  font-size: var(--fs-800);
+  text-transform: uppercase;
+}
+
+
+h2 {
+  font-weight: 700;
+  font-size: var(--fs-600);
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: var(--fs-400);
+  margin-bottom: 0.4rem;
+}
+
+h4 {
+  font-size: var(--fs-400);
+}
+
+p {
+  margin-bottom: 2rem;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button a {
+  color: var(--clr-primary);
+}
+
+.button-2 a {
+  color: #fff;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+
+/* ====================
+     other
+     ==================== */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+textarea:focus,
+input:focus {
+  outline: 2px solid var(--clr-contrast);
+}
