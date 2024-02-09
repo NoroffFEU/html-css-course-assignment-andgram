@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
       <img src="${product.image}" alt="${product.title} Image" class="card-img image-hover">
       <h3>${product.title}</h3>
       <p class="card-price">$<span>${product.price}</span></p>`;
-      productElement.addEventListener('click', (event) => {
-        event.preventDefault();
-        window.location.href = productElement.href; // Gå til lenken definert i href
-      });
+    productElement.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.location.href = productElement.href; // Gå til lenken definert i href
+    });
 
     return productElement;
   }
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// filtrering av produkt
+  // filtrering av produkt
 
 
 
@@ -101,62 +101,128 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Hent produktinformasjon fra API-en basert på produkt-ID
   async function fetchProductDetails(productId) {
-      const apiUrl = `https://api.noroff.dev/api/v1/rainy-days/${productId}`;
-      try {
-          const response = await fetch(apiUrl);
-          const product = await response.json();
-          displayProductDetails(product);
-      } catch (error) {
-          console.error('Error fetching product details:', error);
-      }
+    const apiUrl = `https://api.noroff.dev/api/v1/rainy-days/${productId}`;
+    try {
+      const response = await fetch(apiUrl);
+      const product = await response.json();
+      displayProductDetails(product);
+    } catch (error) {
+      console.error('Error fetching product details:', error);
+    }
   }
 
   // Vis produktinformasjonen på siden
   function displayProductDetails(product) {
-      const productElement = document.createElement('div');
-      productElement.classList.add('split', 'about');
+    const productElement = document.createElement('div');
+    productElement.classList.add('split', 'about');
 
-      // div for bildet
-      const imageDiv = document.createElement('div');
-      imageDiv.classList.add('prod-img');
-      const imageElement = document.createElement('img');
-      imageElement.src = product.image;
-      imageElement.alt = product.title;
-      imageDiv.appendChild(imageElement);
-      productElement.appendChild(imageDiv);
+    // div for bildet
+    const imageDiv = document.createElement('div');
+    imageDiv.classList.add('prod-img');
+    const imageElement = document.createElement('img');
+    imageElement.src = product.image;
+    imageElement.alt = product.title;
+    imageDiv.appendChild(imageElement);
+    productElement.appendChild(imageDiv);
 
-      // div for resten av innholdet
-      const textDiv = document.createElement('div');
-      textDiv.classList.add('product-right-col');
-      
-      //  tittel
-      const titleElement = document.createElement('h3');
-      titleElement.textContent = product.title;
-      textDiv.appendChild(titleElement);
+    // div for resten av innholdet
+    const textDiv = document.createElement('div');
+    textDiv.classList.add('product-right-col');
 
-      //  beskrivelse
-      const descriptionElement = document.createElement('p');
-      descriptionElement.textContent = product.description;
-      textDiv.appendChild(descriptionElement);
+    //  tittel
+    const titleElement = document.createElement('h3');
+    titleElement.textContent = product.title;
+    textDiv.appendChild(titleElement);
 
-      //  pris
-      const priceElement = document.createElement('p');
-      priceElement.textContent = `$${product.price}`;
-      textDiv.appendChild(priceElement);
+    //  beskrivelse
+    const descriptionElement = document.createElement('p');
+    descriptionElement.textContent = product.description;
+    textDiv.appendChild(descriptionElement);
 
-      // "legg til handlekurv" -knapp
-      const addButton = document.createElement('button');
-      addButton.textContent = 'Legg til handlekurv';
-      addButton.addEventListener('click', () => {
-          // logikk for å legge til produktet i handlekurven
-          alert('Produktet ble lagt til i handlekurven.');
-      });
-      textDiv.appendChild(addButton);
+    //  pris
+    const priceElement = document.createElement('p');
+    priceElement.textContent = `$${product.price}`;
+    textDiv.appendChild(priceElement);
 
-      productElement.appendChild(textDiv);
 
-      productDetailsContainer.appendChild(productElement);
+
+    // handlekurv funksjonalitet
+
+    // Legg til funksjon for å legge til produkt i handlekurven
+    function addToCart(product) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || []; // Hent handlekurv fra Local Storage, eller opprett en tom handlekurv hvis den ikke finnes
+      cart.push(product); // Legg til produkt i handlekurv
+      localStorage.setItem('cart', JSON.stringify(cart)); // Lagre handlekurv til Local Storage
+      alert('Produktet ble lagt til i handlekurven.');
+    }
+
+
+    // "legg til handlekurv" -knapp
+    const addButton = document.createElement('button');
+    addButton.classList.add('button-2');
+    addButton.textContent = 'Legg til handlekurv';
+    addButton.addEventListener('click', () => {
+      addToCart(product);
+    });
+    textDiv.appendChild(addButton);
+
+    productElement.appendChild(textDiv);
+
+    productDetailsContainer.appendChild(productElement);
   }
 
   fetchProductDetails(productId);
 });
+
+// handlekurv side
+
+document.addEventListener('DOMContentLoaded', function () {
+  const cartItemsContainer = document.getElementById('cartItems');
+  const totalPriceElement = document.getElementById('totalPrice');
+
+  // Hent handlekurv fra Local Storage
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Vis handlekurvinnhold
+  function displayCartItems() {
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((product, index) => {
+          const itemElement = document.createElement('li');
+          itemElement.textContent = product.title + ' - $' + product.price;
+
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Slett';
+          deleteButton.addEventListener('click', () => {
+              removeFromCart(index);
+          });
+          itemElement.appendChild(deleteButton);
+
+          cartItemsContainer.appendChild(itemElement);
+          total += product.price;
+      });
+
+      totalPriceElement.textContent = total.toFixed(2);
+  }
+
+  // Fjern produkt fra handlekurv
+  function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCartItems();
+  }
+
+  displayCartItems();
+
+});
+
+// vis ordrebekreftelse ved klikk av "fullfør bestilling"
+completeButton = document.getElementById('complete');
+completeButton.addEventListener('click', () => {
+  window.location.href = 'complete.html';
+}); // Merk at parentesen er lagt til her
+
+
+
+
