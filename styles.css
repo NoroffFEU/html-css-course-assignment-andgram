@@ -539,6 +539,10 @@ svg {
   margin-inline: auto;
 }
 
+.card h3 {
+  color: #031222;
+}
+
 
 /* =============
    about page
@@ -577,97 +581,6 @@ svg {
   transition: all .2s linear;
 }
 
-.product-info,
-.payment-container form {
-  padding: 1.5rem;
-  background: #fff;
-  margin-top: 2em;
-  margin-bottom: 4em;
-  margin-inline: auto;
-  width: min(90%, 50.5rem);
-}
-
-.product-info {
-  margin-bottom: 0;
-}
-
-.upperpart {
-  display: flex;
-  gap: 1em;
-  flex-wrap: wrap;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
-
-.final-cost {
-  display: flex;
-  justify-content: space-between;
-}
-
-form .row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-form .row .col {
-  flex: 1 1 15em;
-}
-
-.payment-container .title {
-  font-size: var(--fs-300);
-  color: var(--clr-primary);
-  padding-bottom: 0.4em;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-
-form .inputBox {
-  margin: 1em 0;
-}
-
-.inputBox span {
-  margin-bottom: .3em;
-  display: block;
-}
-
-.inputBox input {
-  width: 100%;
-  border: 1px solid #ccc;
-  padding: 0.6em 1em;
-  font-size: var(--fs-300);
-  text-transform: none;
-}
-
-.col .flex-container {
-  display: flex;
-  gap: 1em;
-}
-
-.inputBox img {
-  height: 2.125em;
-  margin-top: .625em;
-  filter: drop-shadow(0 0 1px #000);
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 1em;
-}
-
-.submit-btn {
-  flex: 1;
-  background-color: var(--clr-primary);
-  font-size: var(--fs-300);
-  color: #fff;
-  padding: 0.8em 1em;
-  text-align: center;
-  border-radius: 4px;
-  border: none;
-}
-
 .submit-btn:hover {
   background: var(--btn-hover);
 }
@@ -699,7 +612,18 @@ form .inputBox {
 .jacket-size,
 .jacket-quantity {
   width: 35%;
+}
 
+.remove {
+  border: none;
+  background: none;
+  color: var(--clr-contrast);
+  text-decoration: underline;
+  margin-left: 1rem;
+}
+
+.remove:hover {
+  color: var(--clr-primary);
 }
 
 /* =============
@@ -750,6 +674,7 @@ form .inputBox {
 
 .prod-img {
   margin-bottom: 2em;
+  padding: 4rem;
 }
 
 .product-right-col p {

@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <p class="card-price">$<span>${product.price}</span></p>`;
     productElement.addEventListener('click', (event) => {
       event.preventDefault();
-      window.location.href = productElement.href; // Gå til lenken definert i href
+      window.location.href = productElement.href;
     });
 
     return productElement;
@@ -59,13 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     productContainer.appendChild(errorElement);
   }
 
-
-
-
   // filtrering av produkt
-
-
-
   function filterProducts(gender) {
     const filteredProducts = allProducts.filter(product => {
       return gender === 'show all' || product.gender === gender;
@@ -91,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // ny side med produktinfo
-
 document.addEventListener('DOMContentLoaded', function () {
   const productDetailsContainer = document.getElementById('productDetails');
 
@@ -160,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // "legg til handlekurv" -knapp
     const addButton = document.createElement('button');
     addButton.classList.add('button-2');
-    addButton.textContent = 'Legg til handlekurv';
+    addButton.textContent = 'Add to cart';
     addButton.addEventListener('click', () => {
       addToCart(product);
     });
@@ -193,7 +186,8 @@ document.addEventListener('DOMContentLoaded', function () {
           itemElement.textContent = product.title + ' - $' + product.price;
 
           const deleteButton = document.createElement('button');
-          deleteButton.textContent = 'Slett';
+          deleteButton.classList.add('remove');
+          deleteButton.textContent = 'Remove';
           deleteButton.addEventListener('click', () => {
               removeFromCart(index);
           });
