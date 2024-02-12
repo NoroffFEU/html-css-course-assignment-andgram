@@ -99,7 +99,7 @@ function addToCart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.push(product);
   localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartDisplay(); // Update cart display after adding product
+  updateCartDisplay();  
   alert('Product added to cart');
 }
 
@@ -124,9 +124,9 @@ function calculateTotalPrice() {
 // Function to update cart display
 function updateCartDisplay() {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  let cartInfo = document.getElementById('cart-info'); // Assuming there's an element with id 'cart-info' to display cart information
-  let totalPriceDisplay = document.getElementById('total-price'); // Assuming there's an element with id 'total-price' to display total price
-  
+  let cartInfo = document.getElementById('cart-info');
+  let totalPriceDisplay = document.getElementById('total-price');
+
   // Clear previous cart info
   cartInfo.innerHTML = '';
   
@@ -175,3 +175,18 @@ window.onload = function() {
     fetchProducts('https://api.noroff.dev/api/v1/rainy-days');
   }
 });
+
+
+// display message when purchase complete
+
+const completeButton = document.getElementById('completePurchase');
+
+completeButton.addEventListener('click', function() {
+
+  completeButton.remove();
+
+  const cartContainer = document.getElementById('cart-info');
+  cartContainer.innerHTML = '<h3>Purchase completed!</h3> <p>Thank you for shopping with us.</p>';
+});
+
+  
