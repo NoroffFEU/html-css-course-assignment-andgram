@@ -9,7 +9,9 @@
     content="Browse our extensive selection of rain jackets in various styles and sizes. Quality and protection are our top priorities. Find your perfect rain jacket here.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="global.css">
   <title>Jackets - RainyDays</title>
@@ -22,8 +24,10 @@
 
     <div class="wrapper">
 
-      <div class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false" role="button">
-        <span class="sr-only">Menu</span></div>
+      <div class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false"
+        role="button">
+        <span class="sr-only">Menu</span>
+      </div>
 
       <a href="index.html"><img class="logo" src="images/logo-white.svg" alt="RainyDays logo"></a>
 
@@ -51,25 +55,107 @@
   </section>
 
 
-  <section>
+  <section class="product-section">
     <div class="container">
-      <h2 class="bestseller-heading">The Collection</h2>
+      <h2>The collection</h2>
       <div id="category-buttons">
-        <button class="btn" id="showAllButton">Show all</button>
-        <button class="btn" id="womensButton">Women's</button>
-        <button class="btn" id="mensButton">Men's</button>
+        <button class="filter-button" data-gender="male">Mens</button>
+        <button class="filter-button" data-gender="female">Womens</button>
+        <button class="filter-button" data-gender="show all">Show All</button>
       </div>
-      
-       <div class="product-grid" id="productGrid">
-
-         <!-- 
-          content from API
-        -->
-
+      <div class="product-gallery" id="productGallery">
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/9-thunderbolt-jacket.jpg">
+          </div>
+          <div class="info">
+            <h3 class="title">Rainy Days Thunderbolt Jacket</h3>
+            <p class="price">$139.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/6-vitaforce-jacket.jpg"></div>
+          <div class="info">
+            <h3 class="title">Rainy Days VitaForce Jacket</h3>
+            <p class="price">$124.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/1-m83-jacket.jpg"></div>
+          <div class="info">
+            <h3 class="title">Rainy Days M83 Jacket</h3>
+            <p class="price">$109.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/10-venture-jacket.jpg"></div>
+          <div class="info">
+            <h3 class="title">Rainy Days Venture Jacket</h3>
+            <p class="price">$99.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/3-habita-jacket.jpg"></div>
+          <div class="info">
+            <h3 class="title">Rainy Days Habita Jacket</h3>
+            <p class="price">$129.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/7-rock-creek-jacket.jpg">
+          </div>
+          <div class="info">
+            <h3 class="title">Rainy Days Rock Creek Jacket</h3>
+            <p class="price">$149.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/4-silverbreeze-jacket.jpg">
+          </div>
+          <div class="info">
+            <h3 class="title">Rainy Days Silverbreeze Jacket</h3>
+            <p class="price">$139.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/11-puddle-jumper-jacket.jpg">
+          </div>
+          <div class="info">
+            <h3 class="title">Rainy Days Puddle Jumper Jacket</h3>
+            <p class="price">$149.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/8-trailblaze-jacket.jpg">
+          </div>
+          <div class="info">
+            <h3 class="title">Rainy Days TrailBlaze Jacket</h3>
+            <p class="price">$179.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/5-xx-jacket.jpg"></div>
+          <div class="info">
+            <h3 class="title">Rainy Days XX Jacket</h3>
+            <p class="price">$109.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/2-gelventure-jacket.jpg">
+          </div>
+          <div class="info">
+            <h3 class="title">Rainy Days Gelventure Jacket</h3>
+            <p class="price">$179.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
+        <div class="product">
+          <div class="image-container"><img src="https://static.noroff.dev/api/rainy-days/0-akra-jacket.jpg"></div>
+          <div class="info">
+            <h3 class="title">Rainy Days Akra Jacket</h3>
+            <p class="price">$129.99</p>
+          </div><button class="details-button">Show details</button>
+        </div>
       </div>
     </div>
-
-
   </section>
 
   <footer class="bg-dark">
