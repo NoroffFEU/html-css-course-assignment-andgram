@@ -66,40 +66,63 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
   }
 
+// function for displaying product details
   async function displayProductDetails(product) {
     const productDetailsContainer = document.getElementById('productDetails');
     productDetailsContainer.innerHTML = '';
-
+  
+    const rightColContainer = document.createElement('div');
+  
+    // Create and append product image
     const productImage = document.createElement('img');
     productImage.src = product.image;
+    productImage.classList.add('prod-img');
     productDetailsContainer.appendChild(productImage);
+  
+    // Create and append details in the right column container
+    appendDetails(rightColContainer, [
+      { tag: 'h2', textContent: product.title },
+      { tag: 'p', textContent: product.description },
+      { tag: 'p', textContent: `Price: ${product.price}` }
+    ]);
 
-    const productName = document.createElement('h2');
-    productName.textContent = product.title;
-    productDetailsContainer.appendChild(productName);
-
-    const productDescription = document.createElement('p');
-    productDescription.textContent = product.description;
-    productDetailsContainer.appendChild(productDescription);
-
-    const productPrice = document.createElement('p');
-    productPrice.textContent = `Price: ${product.price}`;
-    productDetailsContainer.appendChild(productPrice);
-
+    // Create and append add to cart button
     const addToCartButton = document.createElement('button');
     addToCartButton.textContent = 'Add to Cart';
+    addToCartButton.classList.add('button-2');
+    addToCartButton.setAttribute('id', 'addToCart');
     addToCartButton.addEventListener('click', function () {
       addToCart(product);
     });
-    productDetailsContainer.appendChild(addToCartButton);
+    rightColContainer.classList.add('product-right-col');
+    rightColContainer.appendChild(addToCartButton);
+  
+    productDetailsContainer.appendChild(rightColContainer);
+  }
+  
+  function appendDetails(container, details) {
+    details.forEach(detail => {
+      const element = document.createElement(detail.tag);
+      element.textContent = detail.textContent;
+      container.appendChild(element);
+    });
   }
 
-  // Function to add product to cart
+  // Function to update cart indicator
+function updateCartIndicator() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartIndicator = document.getElementById('cartIndicator');
+  if (cartIndicator) {
+    cartIndicator.textContent = cart.length.toString();
+  }
+}
+  
+ // Function to add product to cart
 function addToCart(product) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.push(product);
   localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartDisplay();  
+  updateCartIndicator();
   alert('Product added to cart');
 }
 
@@ -108,7 +131,8 @@ function removeFromCart(index) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.splice(index, 1);
   localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartDisplay(); // Update cart display after removing product
+  updateCartIndicator();
+  updateCartDisplay();
 }
 
 // Function to calculate total price
@@ -146,7 +170,12 @@ function updateCartDisplay() {
   });
   
   // Update total price display
-  totalPriceDisplay.textContent = 'Total Price: $' + calculateTotalPrice();
+  if (calculateTotalPrice() === 0) {
+    totalPriceDisplay.textContent = 'No items added to cart.';
+} else {
+    totalPriceDisplay.textContent = 'Total Price: $' + calculateTotalPrice().toFixed(2);
+}
+
 }
 
 // Call updateCartDisplay when the page loads to display existing cart items
@@ -161,7 +190,6 @@ window.onload = function() {
     );
     displayProducts(filteredProducts);
   }
-
   const filterButtons = document.querySelectorAll('.filter-button');
   filterButtons.forEach(button => {
     button.addEventListener('click', () => filterProducts(button.dataset.gender));
@@ -176,17 +204,23 @@ window.onload = function() {
   }
 });
 
-
 // display message when purchase complete
-
 const completeButton = document.getElementById('completePurchase');
-
 completeButton.addEventListener('click', function() {
 
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // Check if the cart is empty
+  if (cart.length === 0) {
+    alert('Your cart is empty. Please add products before completing the purchase.');
+    return;
+  }
+
   completeButton.remove();
+  localStorage.removeItem('cart');
+  window.open('complete.html', '_blank');
 
-  const cartContainer = document.getElementById('cart-info');
-  cartContainer.innerHTML = '<h3>Purchase completed!</h3> <p>Thank you for shopping with us.</p>';
+
+  
 });
-
   

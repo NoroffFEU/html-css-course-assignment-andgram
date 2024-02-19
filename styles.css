@@ -187,6 +187,10 @@ header {
   margin: 1em 0;
 }
 
+#cartIndicator {
+  color: #fff;
+}
+
 .link-with-icon {
   display: flex;
   width: 3.8em;
@@ -675,6 +679,29 @@ svg {
   color: var(--clr-primary);
 }
 
+#cart-info button {
+  border: none;
+  background: none;
+  transition: 300ms;
+  color: #144164;
+  margin-left: 1rem;
+}
+
+#cart-info button:hover {
+  color: #031222;
+  text-decoration: underline;
+}
+
+#cart-info div {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+#total-price {
+  font-weight: 700;
+}
+
 /* =============
    checkout complete
    ============= */
@@ -723,7 +750,7 @@ svg {
 
 .prod-img {
   margin-bottom: 2em;
-  padding: 4rem;
+  max-width: 60%;
 }
 
 .product-right-col p {
