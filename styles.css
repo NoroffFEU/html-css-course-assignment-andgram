@@ -707,14 +707,28 @@ svg {
    ============= */
 
 .complete-info {
-  text-align: center;
+  padding: 6em;
+}
+
+.seperation-line {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(66, 90, 137);
+}
+
+.cart-content-info, .complete-info  {
+ text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2em;
-  padding: 6em;
+  padding: 2em;
   background: #fff;
   text-transform: none;
+}
+
+.cart-content-info #cart-info {
+  margin-top: 2em;
 }
 
 .complete-info-wrapper {
@@ -722,9 +736,18 @@ svg {
   max-width: 90%;
 }
 
+.payment-info-wrapper {
+  margin: 2em auto;
+  max-width: 90%;
+}
+
 @media (min-width:50em) {
   .complete-info-wrapper {
     margin: 12em auto;
+  }
+
+  .payment-info-wrapper {
+    margin: 5em auto;
   }
 }
 
@@ -741,6 +764,7 @@ svg {
 /* =============
    Product details
    ============= */
+
 
 .product-right-col {
   display: flex;

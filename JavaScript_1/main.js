@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
   }
 
+  // function for displaying products in product grid
   function displayProducts(products) {
     const container = document.getElementById('productGallery');
     container.innerHTML = '';
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         window.location.href = `details.html?id=${product.id}`;
       });
 
+      // appending elements in containers
       productInfo.appendChild(productName);
       productInfo.appendChild(productPrice);
       imageContainer.appendChild(productImg);
@@ -66,11 +68,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
   }
 
-// function for displaying product details
+// function for displaying details on product page
   async function displayProductDetails(product) {
     const productDetailsContainer = document.getElementById('productDetails');
     productDetailsContainer.innerHTML = '';
-  
     const rightColContainer = document.createElement('div');
   
     // Create and append product image
@@ -96,7 +97,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
     rightColContainer.classList.add('product-right-col');
     rightColContainer.appendChild(addToCartButton);
-  
     productDetailsContainer.appendChild(rightColContainer);
   }
   
