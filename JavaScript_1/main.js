@@ -219,8 +219,5 @@ completeButton.addEventListener('click', function() {
   completeButton.remove();
   localStorage.removeItem('cart');
   window.open('complete.html', '_blank');
-
-
-  
 });
   
