@@ -1,15 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Example Title, replace me!</title>
-  <link rel="stylesheet" href="src/css/styles.css">
+  <meta name="description"
+    content="Welcome to our online store for rain jackets. Discover the latest fashion trends and the best rain jackets. Stay dry in style.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global.css">
+  <title>Rainydays – jacket shop</title>
+  <script src="js/nav.js" defer></script>
+  <script src="JavaScript_1/main.js" type="module"></script>
 </head>
-<body class="centered">
-  <div>
-    <img src="/assets/images/noroff-logo.png" alt="Noroff Logo">
-    <h1>Hello World!</h1>
-  </div>
+
+<body>
+  <header>
+
+    <div class="wrapper">
+
+      <div class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false" role="button">
+        <span class="sr-only">Menu</span></div>
+
+      <a href="index.html"><img class="logo" src="images/logo-white.svg" alt="RainyDays logo"></a>
+
+      <nav>
+        <ul id="primary-navigation" data-visible="false" class="primary-navigation flex">
+          <li><a class="active-page" href="index.html">Home</a></li>
+          <li><a href="jackets.html">Jackets</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html" class="link-with-icon">
+            <span class="cart-text">Cart</span>
+            <img class="cart-icon" src="images/cart-icon.svg" alt="cart icon">
+            <span id="cartIndicator"></span>
+          </a></li>
+        
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container container--narrow">
+      <h1>Pushing The <br> Comfort Zone</h1>
+      <p class="subhead">Where Adventure Meets Dry Comfort. <br>
+        Experience Our Rain Jackets.</p>
+      <a href="jackets.html" class="button-2">View Collection</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="features-heading">Key Features Of&nbsp;Our Jackets</h2>
+      <div class="split features">
+        <div><img class="droplets" src="images/waterproof-red.jpg" alt="jacket with droplets"></div>
+        <div>
+          <div class="icon-item">
+            <img src="images/breathable.svg" alt="airflow icon">
+            <div class="icon-text">
+              <h3>Breathable</h3>
+              <p>Our rain jackets are equipped with advanced waterproof technology that keeps you dry even in the
+                heaviest downpours. Stay comfortable no matter the weather.</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <img src="images/durable.svg" alt="chainlink icon">
+            <div class="icon-text">
+              <h3>Durable</h3>
+              <p>Our jackets feature highly breathable fabrics that allow moisture and sweat to escape, ensuring you
+                stay comfortable and dry inside and out, regardless of activity level.</p>
+            </div>
+          </div>
+          <div class="icon-item">
+            <img src="images/waterproof.svg" alt="droplet icon">
+            <div class="icon-text">
+              <h3>Waterproof</h3>
+              <p>Crafted with durable materials and reinforced stitching, our rain jackets are built to withstand rugged
+                outdoor conditions, making them a reliable choice for adventures.</p>
+            </div>
+          </div>
+
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-sec">
+    <div class="container">
+      <div class="cta-con">
+        <h2>Ready To Explore The <br> Rain Jacket Collection?</h2>
+        <a href="jackets.html" class="button">Browse All Jackets</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="split about">
+        <div><img class="lake" src="images/lake.jpg" alt="person with rain jacket in landscape">
+        </div>
+        <div>
+          <h2>The Story Behind <br> Our Clothing</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quo qui ullam, quod at assumenda animi esse?
+            Deserunt ipsam sapiente delectus recusandae vel explicabo molestiae.</p>
+          <a href="about.html" class="button-2">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark">
+    <div class="container">
+      <div class="footer-menu">
+        <div class="footer-content col-1">
+          <a href="index.html">Home</a>
+          <a href="jackets.html">Jackets</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-content col-2">
+          <h3>Newsletter</h3>
+          <form action="https://example.com/submit-form">
+            <label for="email" class="visually-hidden">Your Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+            <br>
+            <button class="form-button" type="submit">Subscribe Now</button>
+          </form>
+        </div>        
+        <div class="footer-content col-3">
+          <a href="index.html"><img class="footer-logo" src="images/logo-white.svg" alt="RainyDays logo"></a>
+          <p>© 2023 RainyDays. <br> All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
+
 </html>

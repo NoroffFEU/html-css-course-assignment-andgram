@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Review and edit your shopping cart. Complete your purchase with our popular rain jackets. Secure and easy ordering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global.css">
+  <title>Cart – Rainydays</title>
+  <script src="js/nav.js" defer></script>
+  <script src="JavaScript_1/main.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="wrapper">
+
+      <div class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false" role="button">
+        <span class="sr-only">Menu</span></div>
+
+      <a href="index.html"><img class="logo" src="images/logo-white.svg" alt="RainyDays logo"></a>
+
+      <nav>
+        <ul id="primary-navigation" data-visible="false" class="primary-navigation flex">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="jackets.html">Jackets</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="active-page link-with-icon" href="cart.html">
+              <span class="cart-text">Cart</span>
+              <img class="cart-icon" src="images/cart-icon.svg" alt="cart icon">
+              <span id="cartIndicator"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  
+    <div class="payment-container">
+     <div class="payment-info-wrapper">
+      <div class="cart-content-info">
+        <div id="cart-info">
+        
+
+
+        </div>
+        <div id="total-price"></div>
+        <div class="seperation-line"></div>
+        <div class="complete-info">
+          <form action="/submit_order" method="POST">
+          
+            <label for="customer_name">Your Name:</label><br>
+            <input type="text" id="customer_name" name="customer_name" required><br><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <label for="phone">Phone Number:</label><br>
+            <input type="tel" id="phone" name="phone" required><br><br>
+            
+            <label for="address">Address:</label><br>
+            <input type="tel" id="phone" name="phone" required>
+           
+          </form>
+          <button class="button-2" id="completePurchase">complete purchase</button>
+        </div>
+      </div>
+     </div>
+    </div>
+
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="footer-menu">
+          <div class="footer-content col-1">
+            <a href="index.html">Home</a>
+            <a href="jackets.html">Jackets</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div class="footer-content col-2">
+            <h3>Newsletter</h3>
+            <form action="https://example.com/submit-form">
+              <label for="email" class="visually-hidden">Your Email Address:</label>
+              <input type="email" placeholder="Your Email Adress" required>
+              <br>
+              <button class="form-button" type="submit">Subscribe Now</button>
+            </form>
+          </div>
+          <div class="footer-content col-3">
+            <a href="index.html"><img class="footer-logo" src="images/logo-white.svg" alt="RainyDays logo"></a>
+            <p>© 2023 RainyDays. <br> All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+
+</html>
