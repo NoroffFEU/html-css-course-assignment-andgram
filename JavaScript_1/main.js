@@ -3,9 +3,14 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   async function fetchProducts(url) {
     try {
+      // Show loading bar
+      const loadingBar = document.querySelector('.loading-bar');
+      loadingBar.style.display = 'block';
+
       const response = await fetch(url);
       allProducts = await response.json();
       displayProducts(allProducts);
+      hideLoadingBar();
     } catch (error) {
       console.error('Error fetching products:', error);
     }
@@ -22,51 +27,57 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
   }
 
-  // function for displaying products in product grid
-  function displayProducts(products) {
-    const container = document.getElementById('productGallery');
-    container.innerHTML = '';
-
-    products.forEach(product => {
-      const productElement = document.createElement('div');
-      productElement.classList.add('product');
-
-      const productInfo = document.createElement('div');
-      productInfo.classList.add('info');
-
-      const productName = document.createElement('h3');
-      productName.textContent = product.title;
-      productName.classList.add('title');
-
-      const productPrice = document.createElement('p');
-      productPrice.textContent = `$${product.price}`;
-      productPrice.classList.add('price');
-
-      const imageContainer = document.createElement('div');
-      imageContainer.classList.add('image-container');
-
-      const productImg = document.createElement('img');
-      productImg.src = product.image;
-
-      const detailsButton = document.createElement('button');
-      detailsButton.textContent = 'Show details';
-      detailsButton.classList.add('details-button');
-
-      // link to details page
-      productElement.addEventListener('click', function () {
-        window.location.href = `details.html?id=${product.id}`;
-      });
-
-      // appending elements in containers
-      productInfo.appendChild(productName);
-      productInfo.appendChild(productPrice);
-      imageContainer.appendChild(productImg);
-      productElement.appendChild(imageContainer);
-      productElement.appendChild(productInfo);
-      productElement.appendChild(detailsButton);
-      container.appendChild(productElement);
-    });
+  // Function to hide loading bar
+  function hideLoadingBar() {
+    const loadingBar = document.querySelector('.loading-bar');
+    loadingBar.style.display = 'none';
   }
+
+  // function for displaying products in product grid
+function displayProducts(products) {
+  const container = document.getElementById('productGallery');
+  container.innerHTML = '';
+
+  products.forEach(product => {
+    const productElement = document.createElement('div');
+    productElement.classList.add('product');
+
+    const productInfo = document.createElement('div');
+    productInfo.classList.add('info');
+
+    const productName = document.createElement('h3');
+    productName.textContent = product.title;
+    productName.classList.add('title');
+
+    const productPrice = document.createElement('p');
+    productPrice.textContent = `$${product.price}`;
+    productPrice.classList.add('price');
+
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+
+    const productImg = document.createElement('img');
+    productImg.src = product.image;
+
+    const detailsButton = document.createElement('button');
+    detailsButton.textContent = 'Show details';
+    detailsButton.classList.add('details-button');
+
+    // Appending elements in containers
+    productInfo.appendChild(productName);
+    productInfo.appendChild(productPrice);
+    imageContainer.appendChild(productImg);
+    productElement.appendChild(imageContainer);
+    productElement.appendChild(productInfo);
+    productElement.appendChild(detailsButton);
+    container.appendChild(productElement);
+
+    // Add event listener to the product element
+    productElement.addEventListener('click', function () {
+      window.location.href = `details.html?id=${product.id}`;
+    });
+  });
+}
 
 // function for displaying details on product page
   async function displayProductDetails(product) {
@@ -194,6 +205,11 @@ window.onload = function() {
   filterButtons.forEach(button => {
     button.addEventListener('click', () => filterProducts(button.dataset.gender));
   });
+
+  // Initialize loading bar
+  const loadingBar = document.querySelector('.loading-bar');
+  hideLoadingBar(); // Initially hide loading bar
+
 
   // Fetch products and display details on DOMContentLoaded
   const productId = new URLSearchParams(window.location.search).get('id');
