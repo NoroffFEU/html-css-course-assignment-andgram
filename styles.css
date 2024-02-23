@@ -430,7 +430,11 @@ nav a:hover:after {
 
 @media (max-width: 60em) {
   .split.features {
-    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+
+  .droplets {
+    display: none;
   }
 }
 
@@ -442,7 +446,7 @@ nav a:hover:after {
   }
 
   .icon-item img {
-    width: 20%;
+    min-width: 20%;
   }
 
   .features-heading::after {
